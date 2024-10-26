@@ -1,7 +1,6 @@
-# ESP32-Ledc-Fade
-# โปรเจค ESP32-Ledc-Fade Example จะมีชื่อว่า ledc.fade
+# ESP32 LEDC Fade Example - `ledc.fade`
 โดย ledc_fade เป็นไลบรารีของ ESP32 เพื่อควบคุมการหรี่ไฟของ LED ที่เชื่อมต่ออยู่กับบอร์ด ESP32 โดยการเปลี่ยนแปลงความเข้มของแสง LED อย่างช้าๆ เพื่อให้เกิดเอฟเฟกต์การหรี่ไฟ ซึ่งสามารถทำได้โดยการปรับค่า Duty Cycle ของสัญญาณ PWM (Pulse Width Modulation) ที่ควบคุม LED
-ขั้นตอนแรกเลือก Example
+## ขั้นตอนการใช้งาน
 1. เริ่มต้นโดยการเลือกตัวอย่าง `ledc.fade`
 # ![Screenshot 2024-10-27 035741](https://github.com/user-attachments/assets/5848894c-f58f-4151-a076-5565a771822b)
 
@@ -25,13 +24,14 @@
 | GPIO 19  | LED 2|
 | GPIO 4   | LED 3|
 | GPIO 5   | LED 4|
-# ![Screenshot 2024-10-27 040840](https://github.com/user-attachments/assets/d7e76d43-de68-4659-9ff6-dc1b77f7b511)
+
 
 ## การรันโปรแกรม
 
 กด Build และรันโปรแกรม จากนั้นเลือก **UART**
 
 ### ผลลัพธ์ที่ได้
+ผลลัพธ์จากการรันจะมีลักษณะดังนี้:
 # ![Screenshot 2024-10-27 041705](https://github.com/user-attachments/assets/12923357-dff6-4dac-af12-398f405b0723)
 # ![Screenshot 2024-10-27 042331](https://github.com/user-attachments/assets/095dfcf1-4e6f-4a20-aaaa-15fb2bef9a47)
 
@@ -39,17 +39,16 @@
 # https://drive.google.com/file/d/1NpNbqrlGodH6-1CDzuCmTdsoyTsczfeO/view?usp=sharing
 
 
-# การเเก้ไข: สามารถปรับความเร็วของการค่อยๆสว่างค่อยๆดับได้
-
-# ![Screenshot 2024-10-27 042754](https://github.com/user-attachments/assets/511aa57c-9864-457d-b0a3-dcd2e7461132)
-
-# ![Screenshot 2024-10-27 042823](https://github.com/user-attachments/assets/08f4f1a9-5a6b-43df-9f61-036fe567f228)
-
+### การเเก้ไขการปรับความเร็วในการหรี่ไฟ: สามารถปรับความเร็วของการค่อยๆสว่างค่อยๆดับได้
+สามารถปรับความเร็วของการค่อย ๆ หรี่ไฟโดยเปลี่ยนค่าเวลาการหรี่ในโค้ด:
 ```
 #define LEDC_TEST_FADE_TIME    (3000)
 ```
-สามารถเปลี่ยนเป็นค่าที่ต้องการได้โดยการปรับเเต่งที่ให้มา คือ 3000 เเสดงว่า 3 วินาที ถ้าหากเราต้องการปรับเเต่งก็สามารถทำได้ เช่น ต้องการให้เร็วขึ้นก็เปลี่ยนจาก 3000 เป็น 1000 
+ค่าเริ่มต้นกำหนดไว้ที่ 3000 มิลลิวินาที (3 วินาที) หากต้องการให้ความเร็วในการหรี่ไฟเพิ่มขึ้น สามารถเปลี่ยนค่าเป็น 1000 มิลลิวินาที (1 วินาที) ดังนี้
+```
+#define LEDC_TEST_FADE_TIME    (1000)
+```
 # ตัวอย่างการปรับ define LEDC_TEST_FADE_TIME    (3000) เป็น (1000)
 # https://drive.google.com/file/d/1iwikTHEop0ah5jd6wFmYZ89cIgCAVY-_/view?usp=sharing
-# สรุปการทดลอง
+### สรุปการทดลอง
 ฟังก์ชัน ledc_fade บน ESP32 เป็นฟังก์ชันที่ช่วยให้คุณสามารถควบคุมการหรี่ไฟของ LED ได้อย่างราบรื่น โดยใช้หลักการของ Pulse Width Modulation (PWM) ซึ่งเป็นเทคนิคที่ช่วยสร้างสัญญาณเอาต์พุตที่สามารถปรับความเข้มของแสงไฟหรือควบคุมมอเตอร์ไฟฟ้าได้อย่างมีประสิทธิภาพและยืดหยุ่น การทำงานของ ledc_fade จะปรับค่า Duty Cycle ของ PWM แบบค่อยเป็นค่อยไปเพื่อให้เกิดการเปลี่ยนแปลงความเข้มแสงของ LED อย่างราบรื่นในระยะเวลาที่กำหนด
